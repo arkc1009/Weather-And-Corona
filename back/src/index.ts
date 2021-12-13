@@ -1,15 +1,12 @@
-import express from 'express';
-import authRouter from './Router/authRouter';
+import express, { Request, Response } from "express";
 
-const PORT = 3001;
-const app: express.Application = express();
+const PORT: Number = 3001;
+const app = express();
 
-app.use('/', authRouter);
-
-app.get('/', (req: express.Request, res: express.Response) => {
-  res.send('hello express!');
+app.get("/", (req: Request, res: Response) => {
+  res.send("hello Express again...");
 });
 
 app.listen(PORT, () => {
-  console.log('server open!');
+  console.log("server open");
 });
