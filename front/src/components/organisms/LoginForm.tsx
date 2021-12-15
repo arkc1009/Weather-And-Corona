@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Api } from '../../api';
 import { errorMsg } from '../../utils/errorMsg';
@@ -22,7 +23,7 @@ const initalState = {
 
 const LoginForm: React.FC = () => {
   const [input, setInput] = useState(initalState);
-
+  const navigate = useNavigate();
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>, id: string) => {
     setInput((prevState) => ({ ...prevState, [id]: e.target.value }));
   }, []);
@@ -35,6 +36,7 @@ const LoginForm: React.FC = () => {
         const res = await Api.post('/auth/login', { email, password }, { withCredentials: true });
         successMsg(res.data.msg);
         setInput(initalState);
+        navigate('/main');
       } catch (error) {
         if (axios.isAxiosError(error)) {
           errorMsg(error.response?.data.msg);
