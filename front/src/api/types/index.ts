@@ -11,3 +11,39 @@ export interface RegisterProps {
   name: string;
   location: number;
 }
+
+export interface TempType {
+  day: number;
+  min: number;
+  max: number;
+  eve: number;
+}
+
+export interface WeatherType {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+}
+
+export interface DailyWeatherState {
+  clouds?: number;
+  dt?: number;
+  humidity?: number;
+  temp: TempType;
+  weather: WeatherType[];
+}
+
+export interface HourlyWeaterState {
+  clouds: number;
+  dt: number;
+  humidity: number;
+  temp: number;
+}
+
+export interface WeatherState {
+  daily: DailyWeatherState[];
+  hourly: HourlyWeaterState[];
+  lat: number;
+  lon: number;
+}
