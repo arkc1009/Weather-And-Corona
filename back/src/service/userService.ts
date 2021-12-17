@@ -22,8 +22,8 @@ const createObject = (modifyData: UserModifyType) => {
   return obj;
 };
 
-export const modifyUser = (useremail: string, modifyData: UserModifyType) => {
-  const index = Users.findIndex((u) => u.email === useremail);
+export const modifyUser = (email: string, modifyData: UserModifyType) => {
+  const index = Users.findIndex((u) => u.email === email);
 
   Users[index] = { ...Users[index], ...createObject(modifyData) };
 
