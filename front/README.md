@@ -17,15 +17,12 @@ REACT_APP_SERVER_URL= 백엔드 서버 주소 (ex. http://localhost:3001)
 REACT_APP_WEATHER_KEY= openweather API KEY
 REACT_APP_GOOGLE_MAP_KEY= 구글 맵 API KEY
 REACT_APP_CORONA_KEY= 코로나 API KEY
-
 ```
 
+```
 cp .env.temp .env
-
 ```
-
 위 명령어를 통해 환경변수(.env) 파일을 생성해야 합니다.
-```
 
 ### 의존성 설치
 
