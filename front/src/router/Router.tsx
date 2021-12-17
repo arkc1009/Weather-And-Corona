@@ -6,18 +6,21 @@ import FirstPage from '../pages/FirstPage';
 import ErrorPage from '../pages/ErrorPage';
 import MainRouter from './MainRouter';
 import Header from '../components/organisms/header/Header';
+import { CoronaProvider } from '../hooks/useCorona';
 
 const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/" element={<FirstPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/main/*" element={<MainRouter />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+      <CoronaProvider>
+        <Routes>
+          <Route path="/" element={<FirstPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/main/*" element={<MainRouter />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </CoronaProvider>
     </BrowserRouter>
   );
 };

@@ -1,10 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
+import { RenderAnimate } from '../Animate';
 import { Margin } from '../components/atomic/Margin';
 import Title from '../components/atomic/Title';
 import InitialModal from '../components/modal/InitialModal';
 import ProfileButton from '../components/molecules/buttons/ProfileButton';
 import FormLocation from '../components/molecules/form/FormLocation';
+import Corona from '../components/organisms/corona/Corona';
 import CurrentMap from '../components/organisms/map';
 import DailyWeather from '../components/organisms/weather/DailyWeather';
 import WeeklyWeather from '../components/organisms/weather/WeeklyWeather';
@@ -18,6 +20,10 @@ const Container = styled.div`
   align-items: center;
 
   padding-top: 1rem;
+
+  & h2 {
+    animation: ${RenderAnimate} ease-in-out 2s;
+  }
 `;
 
 const MainPage: React.FC = () => {
@@ -62,6 +68,8 @@ const MainPage: React.FC = () => {
 
       <Title>코로나 현황(기상정보)</Title>
       <Margin h="1rem" />
+
+      <Corona />
 
       <ProfileButton />
 

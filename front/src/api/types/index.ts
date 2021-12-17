@@ -47,3 +47,10 @@ export interface WeatherState {
   lat: number;
   lon: number;
 }
+
+export interface CoronaState {
+  stateDt: number;
+  stateTime: string;
+  decideCnt: number;
+  deathCnt: number;
+}
