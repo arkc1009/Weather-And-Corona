@@ -1,8 +1,11 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
+import { RenderAnimate } from '../../../Animate';
 import { useLocation } from '../../../hooks/useLocation';
+import { useProfile } from '../../../hooks/useProfile';
 import { useWeather } from '../../../hooks/useWeather';
 import { cityName } from '../../../utils/cityName';
+import RefreshButton from '../../atomic/buttons/RefreshButton';
 import LoadingBar from '../../atomic/loadings/LoadingBar';
 import { Margin } from '../../atomic/Margin';
 import Location from '../../molecules/Location';
@@ -11,6 +14,7 @@ import TodayWeather from '../../molecules/weathers/TodayWeather';
 import NotLocation from './NotLocation';
 
 const Container = styled.div`
+  position: relative;
   width: 80%;
   min-height: 50px;
 
@@ -22,6 +26,8 @@ const Container = styled.div`
   border-radius: 9px;
   box-shadow: 1px 1px 1px rgb(220, 220, 220);
   padding: 2rem 1rem 1rem 1rem;
+
+  animation: ${RenderAnimate} ease-in-out 1s;
 `;
 
 const Loading = styled(Container)`
@@ -29,6 +35,8 @@ const Loading = styled(Container)`
   justify-content: center;
   align-items: center;
   padding: 1rem;
+
+  animation: none;
 `;
 
 interface DailyWeatherProps {
@@ -36,7 +44,8 @@ interface DailyWeatherProps {
 }
 
 const DailyWeather: React.FC<DailyWeatherProps> = ({ openModal }) => {
-  const { location } = useLocation();
+  const { profile } = useProfile();
+  const { location, setLocation } = useLocation();
   const value = useWeather();
 
   const city = useMemo(() => cityName(location), [location]);
@@ -56,6 +65,8 @@ const DailyWeather: React.FC<DailyWeatherProps> = ({ openModal }) => {
         <TodayWeather weather={todayWeather.weather} temp={todayWeather.temp} />
 
         <HourlyWeather hourly={hourlyWeather.slice(0, 24)} />
+
+        <RefreshButton right="1.2rem" onClick={() => setLocation(profile.location)} />
       </Container>
     );
   }
