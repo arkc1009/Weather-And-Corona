@@ -4,6 +4,7 @@ export interface UserType {
   name?: string;
   location?: number;
   refresh?: string;
+  intro?: string;
 }
 
 export interface UserInputType {
@@ -19,4 +20,5 @@ export interface UserModifyType {
   name?: string;
   location?: number;
   refresh?: string;
+  intro?: string;
 }

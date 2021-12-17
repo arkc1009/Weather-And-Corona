@@ -18,6 +18,7 @@ const createObject = (modifyData: UserModifyType) => {
   modifyData.name ? (obj['name'] = modifyData.name) : null;
   modifyData.location ? (obj['location'] = modifyData.location) : null;
   modifyData.refresh ? (obj['refresh'] = modifyData.refresh) : null;
+  modifyData.intro ? (obj['intro'] = modifyData.intro) : null;
 
   return obj;
 };

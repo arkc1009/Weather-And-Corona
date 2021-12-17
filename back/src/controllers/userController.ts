@@ -10,11 +10,11 @@ export const getProfile = (req: Request, res: Response) => {
     return;
   }
 
-  const { email, name, location } = user;
+  const { email, name, location, intro } = user;
   res.status(200).json({
     isSuccess: true,
     msg: '성공적으로 프로필을 가져왔습니다.',
-    data: { email, name, location },
+    data: { email, name, location, intro },
   });
 };
 
@@ -27,10 +27,10 @@ export const updateProfile = (req: Request, res: Response) => {
     return;
   }
 
-  const { email, name, location } = user;
+  const { email, name, location, intro } = user;
   res.status(200).json({
     isSuccess: true,
     msg: '성공적으로 프로필을 수정했습니다.',
-    data: { email, name, location },
+    data: { email, name, location, intro },
   });
 };
