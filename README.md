@@ -9,8 +9,7 @@
 [코로나 API](https://www.data.go.kr/data/15043376/openapi.do)
 
 ### 프론트엔드
-개발과 함께한 넋두리
-[개발 일지? 한탄?](https://functional-aura-c82.notion.site/EST-Front-Project-Front-4d7743045fa9466fac8bcf886dd1b921)
+[개발과 함께한 넋두리](https://functional-aura-c82.notion.site/EST-Front-Project-Front-4d7743045fa9466fac8bcf886dd1b921)
 ```
 cd front
 ```
