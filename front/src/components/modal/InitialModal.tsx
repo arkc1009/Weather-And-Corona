@@ -1,17 +1,9 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import Modal from 'react-modal';
 import Span from '../atomic/Spans/Span';
 import { Margin } from '../atomic/Margin';
-
-const Animate = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
+import { RenderAnimate } from '../../Animate';
 
 const Container = styled(Modal)`
   width: 90vw;
@@ -27,7 +19,7 @@ const Container = styled(Modal)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: ${Animate} 150ms;
+  animation: ${RenderAnimate} 150ms;
 
   border-radius: 5px;
   background-color: #eee;

@@ -12,7 +12,6 @@ import Span from '../components/atomic/Spans/Span';
 
 const Container = styled.div`
   width: 100vw;
-  height: 80vh;
 `;
 
 const TitleWrap = styled.div`

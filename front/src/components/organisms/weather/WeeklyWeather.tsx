@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
+import { RenderAnimate } from '../../../Animate';
 import { useLocation } from '../../../hooks/useLocation';
 import { useWeather } from '../../../hooks/useWeather';
 import LoadingBar from '../../atomic/loadings/LoadingBar';
@@ -14,10 +15,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
+  color: #333333;
   background-color: #fff;
   border-radius: 9px;
   box-shadow: 1px 1px 1px rgb(220, 220, 220);
   padding: 1rem;
+
+  animation: ${RenderAnimate} ease-in-out 1s;
 `;
 
 const Loading = styled(Container)`
@@ -25,6 +29,8 @@ const Loading = styled(Container)`
   justify-content: center;
   align-items: center;
   padding: 1rem;
+
+  animation: none;
 `;
 
 const WeeklyWeather: React.FC = () => {
@@ -33,7 +39,7 @@ const WeeklyWeather: React.FC = () => {
   const dailyWeather = useMemo(() => value && value.weathers && value.weathers.daily, [value]);
 
   const weatherList = useMemo(
-    () => dailyWeather && dailyWeather.map((d) => <WeeklyItem weather={d} key={d.dt} />),
+    () => dailyWeather && dailyWeather.map((d, i) => <WeeklyItem weather={d} key={d.dt} index={i} />),
     [dailyWeather],
   );
 
