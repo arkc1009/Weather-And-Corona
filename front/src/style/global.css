@@ -3,9 +3,11 @@
 }
 
 body {
+  position: relative;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  background-color: #f2f3f4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
