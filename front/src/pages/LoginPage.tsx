@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import LoginForm from '../components/organisms/LoginForm';
+import LoginForm from '../components/organisms/login/LoginForm';
 
 const Container = styled.div`
   width: 100%;

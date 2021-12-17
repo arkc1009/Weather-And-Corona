@@ -9,13 +9,13 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const FormPassword: React.FC<FormInputProps> = ({ value, onChange }) => {
+const FormInput: React.FC<FormInputProps> = ({ isAbs, label, type, placeholder, value, onChange }) => {
   return (
     <Container>
-      <Label isAbs>비밀번호</Label>
-      <Input type="password" placeholder="password" value={value} onChange={(e) => onChange(e, 'password')} />
+      <Label isAbs={isAbs}>{label}</Label>
+      <Input type={type} placeholder={placeholder} value={value} onChange={onChange} />
     </Container>
   );
 };
 
-export default FormPassword;
+export default FormInput;

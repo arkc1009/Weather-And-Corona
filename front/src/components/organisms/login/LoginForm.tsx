@@ -2,13 +2,12 @@ import axios from 'axios';
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { Api } from '../../api';
-import { errorMsg } from '../../utils/errorMsg';
-import { successMsg } from '../../utils/successMsg';
-import SubmitButton from '../atomic/buttons/SubmitButton';
-import { Margin } from '../atomic/Margin';
-import FormEmail from '../molecules/form/FormEmail';
-import FormPassword from '../molecules/form/FormPassword';
+import { Api } from '../../../api';
+import { errorMsg } from '../../../utils/errorMsg';
+import { successMsg } from '../../../utils/successMsg';
+import SubmitButton from '../../atomic/buttons/SubmitButton';
+import { Margin } from '../../atomic/Margin';
+import FormInput from '../../molecules/form/FormInput';
 
 const Container = styled.form`
   display: flex;
@@ -50,10 +49,24 @@ const LoginForm: React.FC = () => {
 
   return (
     <Container onSubmit={onSubmit}>
-      <FormEmail value={email} onChange={onChange} />
+      <FormInput
+        isAbs
+        label="이메일"
+        type="email"
+        placeholder="youremail@example.com"
+        value={email}
+        onChange={(e) => onChange(e, 'email')}
+      />
       <Margin h="1rem" />
 
-      <FormPassword value={password} onChange={onChange} />
+      <FormInput
+        isAbs
+        label="비밀번호"
+        type="password"
+        placeholder="비밀번호를 입력해주세요."
+        value={password}
+        onChange={(e) => onChange(e, 'password')}
+      />
       <Margin h="1rem" />
 
       <SubmitButton>로그인</SubmitButton>
