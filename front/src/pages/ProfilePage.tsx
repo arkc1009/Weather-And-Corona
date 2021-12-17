@@ -59,7 +59,8 @@ const ProfilePage: React.FC = () => {
 
       <ProfileInfo openModal={() => openModal('profileInfo')} />
       <Margin h="1rem" />
-      <ProfileIntro />
+      
+      <ProfileIntro openModal={() => openModal('profileIntro')} />
 
       <InitialModal isOpen={modalState.profileInfo} closeModal={() => closeModal('profileInfo')}>
         <ProfileInfoUpdate closeModal={() => closeModal('profileInfo')} />

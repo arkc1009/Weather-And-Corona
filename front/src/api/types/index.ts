@@ -2,6 +2,7 @@ export interface ProfileState {
   name: string;
   email: string;
   location: number;
+  intro?: string;
 }
 
 export interface RegisterProps {

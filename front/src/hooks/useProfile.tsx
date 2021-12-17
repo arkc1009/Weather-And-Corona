@@ -27,6 +27,7 @@ export const ProfileProvider: React.FC = ({ children }) => {
     name: '',
     email: '',
     location: 0,
+    intro: '',
   });
 
   const fetchProfile = useCallback(async () => {

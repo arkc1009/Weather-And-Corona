@@ -11,11 +11,11 @@ const Container = styled.div`
   padding: 0.5rem;
 `;
 
-const ProfileIntroHeader: React.FC = () => {
+const ProfileIntroHeader: React.FC<{ openModal: () => void }> = ({ openModal }) => {
   return (
     <Container>
       <Span fSize="1.2rem">내정보</Span>
-      <SubmitButton w="3rem" h="1rem">
+      <SubmitButton w="3rem" h="1rem" onClick={openModal}>
         <Edit2 />
       </SubmitButton>
     </Container>
