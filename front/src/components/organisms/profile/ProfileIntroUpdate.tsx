@@ -10,6 +10,8 @@ import { useProfile } from '../../../hooks/useProfile';
 import { errorMsg } from '../../../utils/errorMsg';
 import Bar from '../../atomic/Bar';
 import { Margin } from '../../atomic/Margin';
+import SubmitButton from '../../atomic/buttons/SubmitButton';
+import OptionButton from '../../atomic/buttons/OptionButton';
 
 const Container = styled.div`
   width: 100%;
@@ -17,12 +19,18 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
 `;
 
 const Wrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
+`;
+
+const SaveButton = styled(SubmitButton)`
+  align-self: center;
 `;
 
 const ProfileIntroUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
@@ -72,33 +80,33 @@ const ProfileIntroUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
   return (
     <Container>
       <Wrap>
-        <button type="button" onMouseDown={(e) => onBlockClick(e, 'header-one')}>
+        <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'header-one')}>
           h1
-        </button>
-        <button type="button" onMouseDown={(e) => onBlockClick(e, 'header-two')}>
+        </OptionButton>
+        <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'header-two')}>
           h2
-        </button>
-        <button type="button" onMouseDown={(e) => onBlockClick(e, 'header-three')}>
+        </OptionButton>
+        <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'header-three')}>
           h3
-        </button>
-        <button type="button" onMouseDown={(e) => onBlockClick(e, 'unstyled')}>
+        </OptionButton>
+        <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'unstyled')}>
           normal
-        </button>
-        <button type="button" onMouseDown={(e) => onToggleClick(e, 'BOLD')}>
+        </OptionButton>
+        <OptionButton type="button" onMouseDown={(e) => onToggleClick(e, 'BOLD')}>
           bold
-        </button>
-        <button type="button" onMouseDown={(e) => onToggleClick(e, 'ITALIC')}>
+        </OptionButton>
+        <OptionButton type="button" onMouseDown={(e) => onToggleClick(e, 'ITALIC')}>
           italic
-        </button>
-        <button type="button" onMouseDown={(e) => onToggleClick(e, 'STRIKETHROUGH')}>
+        </OptionButton>
+        <OptionButton type="button" onMouseDown={(e) => onToggleClick(e, 'STRIKETHROUGH')}>
           strikthrough
-        </button>
-        <button type="button" onMouseDown={(e) => onBlockClick(e, 'ordered-list-item')}>
+        </OptionButton>
+        <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'ordered-list-item')}>
           ol
-        </button>
-        <button type="button" onMouseDown={(e) => onBlockClick(e, 'unordered-list-item')}>
+        </OptionButton>
+        <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'unordered-list-item')}>
           ul
-        </button>
+        </OptionButton>
       </Wrap>
       <Margin h="1rem" />
 
@@ -107,15 +115,15 @@ const ProfileIntroUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
 
       <Editor editorState={editorState} onChange={setEditorState} handleKeyCommand={handleKey} />
 
-      <button
+      <SaveButton
         type="submit"
         onClick={(e) => {
           e.preventDefault();
           handleSave();
         }}
       >
-        save
-      </button>
+        내 정보 수정
+      </SaveButton>
     </Container>
   );
 };

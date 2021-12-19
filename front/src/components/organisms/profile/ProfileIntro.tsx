@@ -4,7 +4,6 @@ import ProfileIntroContent from '../../molecules/profiles/ProfileIntroContent';
 import ProfileIntroHeader from '../../molecules/profiles/ProfileIntroHeader';
 
 const Container = styled.div`
-  width: 90%;
   display: flex;
   flex-direction: column;
 
@@ -13,7 +12,7 @@ const Container = styled.div`
 
 const ProfileIntro: React.FC<{ openModal: () => void }> = ({ openModal }) => {
   return (
-    <Container>
+    <Container> 
       <ProfileIntroHeader openModal={openModal} />
 
       <ProfileIntroContent />
