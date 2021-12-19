@@ -1,4 +1,4 @@
-# 이스트 프론트 프로젝트 백엔드
+# 이스트 프론트 프로젝트
 
 [개발과 함께한 넋두리](https://functional-aura-c82.notion.site/EST-Front-Project-Front-4d7743045fa9466fac8bcf886dd1b921)
 
