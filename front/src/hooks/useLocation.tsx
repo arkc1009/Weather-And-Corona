@@ -18,7 +18,7 @@ export const LocationProvider: React.FC = ({ children }) => {
 
   const value = useMemo(() => ({ location, setLocation }), [location, setLocation]);
 
-  return <context.Provider value={value}>{children}/</context.Provider>;
+  return <context.Provider value={value}>{children}</context.Provider>;
 };
 
 export const useLocation = (): LocationContextType => useContext(context);
