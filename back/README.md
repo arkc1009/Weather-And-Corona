@@ -1,5 +1,7 @@
 # 이스트 프론트 프로젝트 백엔드
 
+[개발과 함께한 넋두리](https://functional-aura-c82.notion.site/EST-Front-Project-Front-4d7743045fa9466fac8bcf886dd1b921)
+
 ## 어떤 프로젝트?
 
 유저의 위치 정보를 토대로 해당 위치의 **지도**, **날씨**, **기상 정보**를 제공하며,
@@ -37,6 +39,12 @@ cp .env.temp .env
 yarn
 ```
 
+### 통합 시작
+
+```
+yarn start
+```
+
 ### 개발모드 시작
 
 ```
@@ -52,7 +60,7 @@ yarn build
 ### 서버 실행
 
 ```
-yarn start
+yarn server
 ```
 
 ### 그 외 명령어들
