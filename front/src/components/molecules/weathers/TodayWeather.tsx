@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { DailyWeatherState } from '../../../api/types';
+import { useDepth } from '../../../hooks/useDepth';
 import WeatherIcon from '../../atomic/icons/WeatherIcon';
 import Span from '../../atomic/Spans/Span';
 
@@ -28,7 +29,12 @@ const SubWrap = styled.div`
 `;
 
 const TodayWeather: React.FC<DailyWeatherState> = ({ weather, temp }) => {
+  const { addDepth } = useDepth();
   const { min, max, eve } = temp;
+
+  useEffect(() => {
+    addDepth();
+  }, []);
 
   return (
     <Container>

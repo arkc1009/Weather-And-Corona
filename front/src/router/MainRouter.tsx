@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { DepthProvider } from '../hooks/useDepth';
 import { LocationProvider } from '../hooks/useLocation';
 import { ProfileProvider } from '../hooks/useProfile';
 import { WeatherProvider } from '../hooks/useWeather';
@@ -11,10 +12,12 @@ const MainRouter: React.FC = () => {
     <ProfileProvider>
       <LocationProvider>
         <WeatherProvider>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-          </Routes>
+          <DepthProvider>
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+            </Routes>
+          </DepthProvider>
         </WeatherProvider>
       </LocationProvider>
     </ProfileProvider>
