@@ -7,12 +7,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 `;
 
 const ProfileIntro: React.FC<{ openModal: () => void }> = ({ openModal }) => {
   return (
-    <Container> 
+    <Container>
       <ProfileIntroHeader openModal={openModal} />
 
       <ProfileIntroContent />

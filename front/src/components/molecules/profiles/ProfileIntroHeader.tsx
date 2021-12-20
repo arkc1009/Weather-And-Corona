@@ -2,19 +2,18 @@ import React from 'react';
 import { Edit2 } from 'react-feather';
 import styled from 'styled-components';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
-import Span from '../../atomic/Spans/Span';
+import Title from '../../atomic/Title';
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
-
-  padding: 0.5rem;
 `;
 
 const ProfileIntroHeader: React.FC<{ openModal: () => void }> = ({ openModal }) => {
   return (
     <Container>
-      <Span fSize="1.2rem">내정보</Span>
+      <Title>내정보</Title>
       <SubmitButton w="3rem" h="1rem" onClick={openModal}>
         <Edit2 />
       </SubmitButton>

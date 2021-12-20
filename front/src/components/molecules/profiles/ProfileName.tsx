@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Span from '../../atomic/Spans/Span';
 
 const Container = styled.div`
+  word-break: break-all;
   font-size: 1.2rem;
 `;
 
