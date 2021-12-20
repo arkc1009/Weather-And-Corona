@@ -20,7 +20,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  padding-top: 1rem;
+  padding: 1rem 0;
 
   & h2 {
     animation: ${RenderAnimate} ease-in-out 2s;

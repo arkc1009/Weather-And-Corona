@@ -1,17 +1,25 @@
 import React, { useMemo } from 'react';
 import { Droplet } from 'react-feather';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { DailyWeatherState } from '../../../api/types';
 import { days } from '../../../utils/makeDays';
 import WeatherIcon from '../../atomic/icons/WeatherIcon';
 import { Margin } from '../../atomic/Margin';
 import Span from '../../atomic/Spans/Span';
 
-const Container = styled.div`
+const Container = styled.div<{ isToday: boolean | 0 | undefined }>`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  ${(props) =>
+    props.isToday &&
+    css`
+      & span {
+        font-weight: bold;
+      }
+    `}
 `;
 
 const FlexSpan = styled(Span)`
@@ -34,14 +42,18 @@ const WeeklyItem: React.FC<WeeklyItemProps> = ({ weather, index }) => {
   }
 
   return (
-    <Container>
-      <Span fWeight={isToday ? 'bold' : 'intial'}>{time && days(time.getDay())}</Span>
+    <Container isToday={isToday}>
+      <Span>{time && days(time.getDay())}</Span>
       <FlexSpan>
         <Droplet />
         <Margin w="0.2rem" />
         <Span color={clouds && clouds >= 70 ? '#5c7aea' : 'inital'}>{clouds}%</Span>
       </FlexSpan>
-      <WeatherIcon weather={weather.weather[0]} /> {(temp.max - 273).toFixed(0)}º / {(temp.min - 273).toFixed(0)}º
+      <WeatherIcon weather={weather.weather[0]} />
+      <div>
+        <Span color="#dd4949">{(temp.max - 273).toFixed(0)}º</Span> /{' '}
+        <Span color="#3649bd">{(temp.min - 273).toFixed(0)}º</Span>
+      </div>
     </Container>
   );
 };

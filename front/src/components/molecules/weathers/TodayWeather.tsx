@@ -23,7 +23,6 @@ const SubWrap = styled.div`
   text-align: end;
 
   & span {
-    color: rgb(120, 120, 120);
     font-size: 0.8rem;
   }
 `;
@@ -45,8 +44,8 @@ const TodayWeather: React.FC<DailyWeatherState> = ({ weather, temp }) => {
 
       <SubWrap>
         <Span>{weather[0].description}</Span>
-        <Span>{(max - 273).toFixed(1)}</Span>
-        <Span>{(min - 273).toFixed(1)}</Span>
+        <Span color="salmon">{(max - 273).toFixed(1)}º</Span>
+        <Span color="#14279b">{(min - 273).toFixed(1)}º</Span>
       </SubWrap>
     </Container>
   );

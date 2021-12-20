@@ -10,7 +10,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: black;
+  background-color: #333;
 `;
 
 const Header: React.FC = () => {
