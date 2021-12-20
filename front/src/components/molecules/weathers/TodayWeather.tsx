@@ -45,8 +45,8 @@ const TodayWeather: React.FC<DailyWeatherState> = ({ weather, temp }) => {
 
       <SubWrap>
         <Span>{weather[0].description}</Span>
-        <Span>{max}</Span>
-        <Span>{min}</Span>
+        <Span>{(max - 273).toFixed(1)}</Span>
+        <Span>{(min - 273).toFixed(1)}</Span>
       </SubWrap>
     </Container>
   );
