@@ -1,16 +1,16 @@
-import axios from 'axios';
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 import { Api } from '../../../api';
+import { ProfileUpdateProps } from './types';
 import { useProfile } from '../../../hooks/useProfile';
 import { errorMsg } from '../../../utils/errorMsg';
 import { successMsg } from '../../../utils/successMsg';
-import SubmitButton from '../../atomic/buttons/SubmitButton';
 import { Margin } from '../../atomic/Margin';
+import SubmitButton from '../../atomic/buttons/SubmitButton';
 import FormLocation from '../../molecules/form/FormLocation';
 import FormInput from '../../molecules/form/FormInput';
-import { ProfileUpdateProps } from './types';
 
 const Form = styled.form`
   display: flex;
