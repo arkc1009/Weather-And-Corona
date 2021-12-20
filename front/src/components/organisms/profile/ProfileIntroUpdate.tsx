@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Editor, EditorState, RichUtils, DraftEditorCommand, convertToRaw, convertFromRaw } from 'draft-js';
 import axios from 'axios';
@@ -34,6 +35,7 @@ const SaveButton = styled(SubmitButton)`
 `;
 
 const ProfileIntroUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
+  const navigate = useNavigate();
   const { profile, fetchProfile } = useProfile();
 
   const [editorState, setEditorState] = useState<EditorState>(
@@ -73,6 +75,7 @@ const ProfileIntroUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         errorMsg(error.response?.data.msg);
+        navigate('/login');
       }
     }
   };

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Api } from '../../../api';
 import { useProfile } from '../../../hooks/useProfile';
@@ -18,6 +19,7 @@ const Form = styled.form`
 `;
 
 const ProfileUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
+  const navigate = useNavigate();
   const { profile, fetchProfile } = useProfile();
   const [input, setInput] = useState(profile);
 
@@ -51,6 +53,7 @@ const ProfileUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
       } catch (error) {
         if (axios.isAxiosError(error)) {
           errorMsg(error.response?.data.msg);
+          navigate('/login');
         }
       }
     },
