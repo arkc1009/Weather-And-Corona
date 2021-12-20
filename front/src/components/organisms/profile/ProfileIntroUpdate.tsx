@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Editor, EditorState, RichUtils, DraftEditorCommand, convertToRaw, convertFromRaw } from 'draft-js';
 import axios from 'axios';
 import { ProfileUpdateProps } from './types';
-import 'draft-js/dist/Draft.css';
 import { Api } from '../../../api';
 import { successMsg } from '../../../utils/successMsg';
 import { useProfile } from '../../../hooks/useProfile';
@@ -12,6 +11,7 @@ import Bar from '../../atomic/Bar';
 import { Margin } from '../../atomic/Margin';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
 import OptionButton from '../../atomic/buttons/OptionButton';
+import '../../../style/draft.css';
 
 const Container = styled.div`
   width: 100%;

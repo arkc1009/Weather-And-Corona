@@ -21,7 +21,7 @@ const ProfileIntroContent: React.FC = () => {
   const converted = useMemo(() => introduce && draftToHtml(convertToRaw(introduce.getCurrentContent())), [introduce]);
 
   if (!converted) {
-    return <Container>Loading...</Container>;
+    return <Container>{null}</Container>;
   }
   return <Container dangerouslySetInnerHTML={{ __html: converted }} />;
 };
