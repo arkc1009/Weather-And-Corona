@@ -14,12 +14,12 @@ const initalState = {
   fetchProfile: () => null,
 };
 
-interface UseProfileState {
+interface ProfileContextType {
   profile: ProfileState;
   fetchProfile: () => void;
 }
 
-const context = createContext<UseProfileState>(initalState);
+const context = createContext<ProfileContextType>(initalState);
 
 export const ProfileProvider: React.FC = ({ children }) => {
   const navigate = useNavigate();
@@ -57,4 +57,4 @@ export const ProfileProvider: React.FC = ({ children }) => {
   return <context.Provider value={value}>{children}</context.Provider>;
 };
 
-export const useProfile = (): UseProfileState => useContext(context);
+export const useProfile = (): ProfileContextType => useContext(context);
