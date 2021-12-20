@@ -16,7 +16,7 @@ export const cityName = (city: number): string => {
       return '대전';
     case 1833742:
       return '울산';
-    case 9999999:
+    case 1842616:
       return '세종';
     case 1841610:
       return '경기';
