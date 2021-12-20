@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import dotenv from 'dotenv';
+import { Toaster } from 'react-hot-toast';
+import './style/global.css';
+import Router from './router/Router';
+
+dotenv.config();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router />
+
+    <Toaster />
   </React.StrictMode>,
   document.getElementById('root'),
 );
