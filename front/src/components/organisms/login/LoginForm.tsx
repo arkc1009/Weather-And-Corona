@@ -7,6 +7,7 @@ import { errorMsg } from '../../../utils/errorMsg';
 import { successMsg } from '../../../utils/successMsg';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
 import { Margin } from '../../atomic/Margin';
+import Span from '../../atomic/Spans/Span';
 import FormInput from '../../molecules/form/FormInput';
 
 const Container = styled.form`
@@ -19,6 +20,10 @@ const initalState = {
   email: '',
   password: '',
 };
+
+const UnderLineSpan = styled(Span)`
+  text-decoration: underline;
+`;
 
 const LoginForm: React.FC = () => {
   const [input, setInput] = useState(initalState);
@@ -45,6 +50,8 @@ const LoginForm: React.FC = () => {
     [input],
   );
 
+  const onClickRegister = useCallback(() => navigate('/register'), [navigate]);
+
   const { email, password } = input;
 
   return (
@@ -70,6 +77,11 @@ const LoginForm: React.FC = () => {
       <Margin h="1rem" />
 
       <SubmitButton>로그인</SubmitButton>
+      <Margin h="0.5rem" />
+
+      <UnderLineSpan fSize="0.9rem" fWeight="bold" color="#333333" onClick={onClickRegister}>
+        회원가입 하러 가기
+      </UnderLineSpan>
     </Container>
   );
 };
