@@ -81,31 +81,31 @@ const ProfileIntroUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
     <Container>
       <Wrap>
         <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'header-one')}>
-          h1
+          <b>제목1</b>
         </OptionButton>
         <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'header-two')}>
-          h2
+          <b>제목2</b>
         </OptionButton>
         <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'header-three')}>
-          h3
+          <b>제목3</b>
         </OptionButton>
         <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'unstyled')}>
-          normal
+          일반
         </OptionButton>
         <OptionButton type="button" onMouseDown={(e) => onToggleClick(e, 'BOLD')}>
-          bold
+          <b>굵게</b>
         </OptionButton>
         <OptionButton type="button" onMouseDown={(e) => onToggleClick(e, 'ITALIC')}>
-          italic
+          <em>기울임</em>
         </OptionButton>
         <OptionButton type="button" onMouseDown={(e) => onToggleClick(e, 'STRIKETHROUGH')}>
-          strikthrough
+          <del>취소선</del>
         </OptionButton>
         <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'ordered-list-item')}>
-          ol
+          1. ol
         </OptionButton>
         <OptionButton type="button" onMouseDown={(e) => onBlockClick(e, 'unordered-list-item')}>
-          ul
+          - ul
         </OptionButton>
       </Wrap>
       <Margin h="1rem" />
