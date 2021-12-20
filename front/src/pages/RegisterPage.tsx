@@ -3,6 +3,8 @@ import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Api } from '../api';
+import { Margin } from '../components/atomic/Margin';
+import Title from '../components/atomic/Title';
 import RegisterExpandForm from '../components/organisms/register/RegisterExpandForm';
 import RegisterInitialForm from '../components/organisms/register/RegisterInitialForm';
 import { errorMsg } from '../utils/errorMsg';
@@ -14,8 +16,18 @@ const Container = styled.div`
   height: 80vh;
 
   display: flex;
-  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
   padding-top: 4rem;
+`;
+
+const Content = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100%;
+
+  display: flex;
+  overflow: hidden;
 `;
 
 const initalState = {
@@ -64,13 +76,18 @@ const RegisterPage: React.FC = () => {
 
   return (
     <Container>
-      <RegisterInitialForm onChangeInput={onChangeInput} onNext={onNext} isNext={isNext} input={register} />
-      <RegisterExpandForm
-        onChange={{ onChangeInput, onChangeSelect }}
-        postRegister={postRegister}
-        isNext={isNext}
-        input={register}
-      />
+      <Title>회원가입</Title>
+      <Margin h="2rem" />
+
+      <Content>
+        <RegisterInitialForm onChangeInput={onChangeInput} onNext={onNext} isNext={isNext} input={register} />
+        <RegisterExpandForm
+          onChange={{ onChangeInput, onChangeSelect }}
+          postRegister={postRegister}
+          isNext={isNext}
+          input={register}
+        />
+      </Content>
     </Container>
   );
 };
