@@ -7,3 +7,7 @@ export const isLogin = (): boolean => {
   return false;
 };
 
+export const logoutUser = (): void => {
+  cookies.remove('access_token');
+  cookies.remove('refresh_token');
+};
