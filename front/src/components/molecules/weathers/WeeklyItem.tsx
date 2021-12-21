@@ -44,12 +44,15 @@ const WeeklyItem: React.FC<WeeklyItemProps> = ({ weather, index }) => {
   return (
     <Container isToday={isToday}>
       <Span>{time && days(time.getDay())}</Span>
+
       <FlexSpan>
         <Droplet />
         <Margin w="0.2rem" />
         <Span color={clouds && clouds >= 70 ? '#5c7aea' : 'inital'}>{clouds}%</Span>
       </FlexSpan>
+
       <WeatherIcon weather={weather.weather[0]} />
+
       <div>
         <Span color="#dd4949">{(temp.max - 273).toFixed(0)}º</Span> /{' '}
         <Span color="#3649bd">{(temp.min - 273).toFixed(0)}º</Span>
