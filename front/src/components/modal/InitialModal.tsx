@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import Span from '../atomic/Spans/Span';
@@ -7,13 +7,12 @@ import { ModalContentTypes } from './types/ModalContentTypes';
 import CurrentMap from '../organisms/map';
 import ProfileIntroUpdate from '../organisms/profile/ProfileIntroUpdate';
 import ProfileInfoUpdate from '../organisms/profile/ProfileInfoUpdate';
-import FormLocation from '../molecules/form/FormLocation';
+import FormLocationButtons from '../molecules/form/FormLocationButtons';
 import { useModal } from '../../hooks/useModal';
-import { useLocation } from '../../hooks/useLocation';
 
-const Container = styled(Modal)`
+const Container = styled(Modal)<{ isSmall: boolean }>`
   width: 90vw;
-  height: 70vh;
+  height: ${(props) => (props.isSmall ? '40vh' : '70vh')};
   padding-top: 4rem;
   z-index: 99;
 
@@ -41,19 +40,10 @@ const UnderLineSpan = styled(Span)`
 
 const InitialModal: React.FC = () => {
   const { modalState, isOpen, closeModal } = useModal();
-  const { setLocation } = useLocation();
-
-  const onChange = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      setLocation(parseInt(e.target.value, 10));
-      closeModal();
-    },
-    [setLocation, closeModal],
-  );
 
   const contents: ModalContentTypes = useMemo(
     () => ({
-      selectLocation: <FormLocation onChange={onChange} />,
+      selectLocation: <FormLocationButtons />,
       viewMap: <CurrentMap />,
       profileInfo: <ProfileInfoUpdate />,
       profileIntro: <ProfileIntroUpdate />,
@@ -62,7 +52,12 @@ const InitialModal: React.FC = () => {
   );
 
   return (
-    <Container isOpen={isOpen} onRequestClose={closeModal} ariaHideApp={false}>
+    <Container
+      isSmall={modalState === 'selectLocation'}
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+      ariaHideApp={false}
+    >
       {modalState && contents[modalState]}
 
       <UnderLineSpan onClick={closeModal}>뒤로가기</UnderLineSpan>
