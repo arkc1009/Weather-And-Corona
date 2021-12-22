@@ -28,6 +28,10 @@ const Wrap = styled.div<{ mw: string }>`
   display: flex;
   align-items: center;
   text-align: center;
+
+  & svg {
+    width: 1.2rem;
+  }
 `;
 
 interface WeeklyItemProps {
@@ -55,7 +59,7 @@ const WeeklyItem: React.FC<WeeklyItemProps> = ({ weather, index, widthRadio }) =
       <Wrap mw={cloudsRadio}>
         <Droplet />
 
-        <Span mg="0 0 0 0.2rem" color={clouds && clouds >= 80 ? '#5c7aea' : 'inital'}>
+        <Span mg="0 0 0 0.2rem" fSize="0.8rem" color={clouds && clouds >= 80 ? '#5c7aea' : 'inital'}>
           {clouds}%
         </Span>
       </Wrap>

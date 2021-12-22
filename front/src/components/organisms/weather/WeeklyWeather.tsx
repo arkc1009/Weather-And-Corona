@@ -88,7 +88,7 @@ const WeeklyWeather: React.FC = () => {
           <Header mw={daysRadio}>요일</Header>
           <Header mw={cloudsRadio}>강수확률</Header>
           <Header mw={iconRadio}>날씨</Header>
-          <Header mw={tempRadio}>온도</Header>
+          <Header mw={tempRadio}>온도(고/저)</Header>
         </HeaderWrap>
 
         <Bar />
