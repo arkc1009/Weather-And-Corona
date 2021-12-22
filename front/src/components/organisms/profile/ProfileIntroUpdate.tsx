@@ -5,13 +5,13 @@ import { Editor, EditorState, RichUtils, DraftEditorCommand, convertToRaw, conve
 import '../../../style/draft.css';
 import axios from 'axios';
 import { Api } from '../../../api';
-import { ProfileUpdateProps } from './types';
 import { errorMsg } from '../../../utils/errorMsg';
 import { successMsg } from '../../../utils/successMsg';
 import { useProfile } from '../../../hooks/useProfile';
 import Bar from '../../atomic/Bar';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
 import OptionButton from '../../atomic/buttons/OptionButton';
+import { useModal } from '../../../hooks/useModal';
 
 const Container = styled.div`
   width: 100%;
@@ -35,8 +35,9 @@ const SaveButton = styled(SubmitButton)`
   align-self: center;
 `;
 
-const ProfileIntroUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
+const ProfileIntroUpdate: React.FC = () => {
   const navigate = useNavigate();
+  const { closeModal } = useModal();
   const { profile, fetchProfile } = useProfile();
 
   const [editorState, setEditorState] = useState<EditorState>(

@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import Span from '../atomic/Spans/Span';
-import { Margin } from '../atomic/Margin';
 import { RenderAnimate } from '../../Animate';
+import { ModalContentTypes } from './types/ModalContentTypes';
+import CurrentMap from '../organisms/map';
+import ProfileIntroUpdate from '../organisms/profile/ProfileIntroUpdate';
+import ProfileInfoUpdate from '../organisms/profile/ProfileInfoUpdate';
+import FormLocation from '../molecules/form/FormLocation';
+import { useModal } from '../../hooks/useModal';
+import { useLocation } from '../../hooks/useLocation';
 
 const Container = styled(Modal)`
   width: 90vw;
@@ -28,20 +34,37 @@ const Container = styled(Modal)`
 `;
 
 const UnderLineSpan = styled(Span)`
+  margin-top: 1rem;
   text-decoration: underline;
   cursor: pointer;
 `;
 
-interface InitialModalProps {
-  isOpen: boolean;
-  closeModal: () => void;
-}
+const InitialModal: React.FC = () => {
+  const { modalState, isOpen, closeModal } = useModal();
+  const { setLocation } = useLocation();
 
-const InitialModal: React.FC<InitialModalProps> = ({ isOpen, closeModal, children }) => {
+  const onChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      setLocation(parseInt(e.target.value, 10));
+      closeModal();
+    },
+    [setLocation, closeModal],
+  );
+
+  const contents: ModalContentTypes = useMemo(
+    () => ({
+      selectLocation: <FormLocation onChange={onChange} />,
+      viewMap: <CurrentMap />,
+      profileInfo: <ProfileInfoUpdate />,
+      profileIntro: <ProfileIntroUpdate />,
+    }),
+    [],
+  );
+
   return (
     <Container isOpen={isOpen} onRequestClose={closeModal} ariaHideApp={false}>
-      {children}
-      <Margin h="1rem" />
+      {modalState && contents[modalState]}
+
       <UnderLineSpan onClick={closeModal}>뒤로가기</UnderLineSpan>
     </Container>
   );

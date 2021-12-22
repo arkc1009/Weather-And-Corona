@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Map, MapPin } from 'react-feather';
 import styled from 'styled-components';
 import Span from '../atomic/Spans/Span';
+import { MainModalTypes } from '../modal/types/MainModalTypes';
 
 const Container = styled.div`
   position: relative;
@@ -32,10 +33,18 @@ const MapIcon = styled(Map)`
 
 interface LocationProps {
   city: string;
-  openModal: (modal: string) => void;
+  openModal: (modal: MainModalTypes) => void;
 }
 
 const Location: React.FC<LocationProps> = ({ city, openModal }) => {
+  const openSelectLocationModal = useCallback(() => {
+    openModal('selectLocation');
+  }, [openModal]);
+
+  const openViewMapModal = useCallback(() => {
+    openModal('viewMap');
+  }, [openModal]);
+  
   return (
     <Container>
       <MapPin />
@@ -44,11 +53,11 @@ const Location: React.FC<LocationProps> = ({ city, openModal }) => {
         {city}
       </Span>
 
-      <UnderLineSpan fSize="0.8rem" fWeight="300" onClick={() => openModal('selectLocation')}>
+      <UnderLineSpan fSize="0.8rem" fWeight="300" onClick={openSelectLocationModal}>
         다른 지역
       </UnderLineSpan>
 
-      <MapIcon onClick={() => openModal('viewMap')} />
+      <MapIcon onClick={openViewMapModal} />
     </Container>
   );
 };

@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Api } from '../../../api';
-import { ProfileUpdateProps } from './types';
 import { useProfile } from '../../../hooks/useProfile';
 import { errorMsg } from '../../../utils/errorMsg';
 import { successMsg } from '../../../utils/successMsg';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
 import FormLocation from '../../molecules/form/FormLocation';
 import FormInput from '../../molecules/form/FormInput';
+import { useModal } from '../../../hooks/useModal';
 
 const Form = styled.form`
   display: flex;
@@ -17,8 +17,9 @@ const Form = styled.form`
   align-items: center;
 `;
 
-const ProfileUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
+const ProfileUpdate: React.FC = () => {
   const navigate = useNavigate();
+  const { closeModal } = useModal();
   const { profile, fetchProfile } = useProfile();
   const [input, setInput] = useState(profile);
 
@@ -45,9 +46,9 @@ const ProfileUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
       try {
         const res = await Api.post('/user/profile', input);
         successMsg(res.data.msg);
+        fetchProfile();
         if (closeModal) {
           closeModal();
-          fetchProfile();
         }
       } catch (error) {
         if (axios.isAxiosError(error)) {

@@ -1,16 +1,13 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { RenderAnimate } from '../Animate';
 import Title from '../components/atomic/Title';
-import InitialModal from '../components/modal/InitialModal';
 import ProfileButton from '../components/molecules/buttons/ProfileButton';
-import FormLocation from '../components/molecules/form/FormLocation';
 import Corona from '../components/organisms/corona/Corona';
-import CurrentMap from '../components/organisms/map';
 import DailyWeather from '../components/organisms/weather/DailyWeather';
 import WeeklyWeather from '../components/organisms/weather/WeeklyWeather';
 import { useDepth } from '../hooks/useDepth';
-import { useLocation } from '../hooks/useLocation';
+import { useModal } from '../hooks/useModal';
 
 const Container = styled.div`
   width: 100vw;
@@ -28,33 +25,7 @@ const Container = styled.div`
 
 const MainPage: React.FC = () => {
   const { depth } = useDepth();
-  const { setLocation } = useLocation();
-  const [modalState, setModalState] = useState({
-    selectLocation: false,
-    viewMap: false,
-  });
-
-  const closeModal = useCallback(
-    (modal: string) => {
-      setModalState((prevState) => ({ ...prevState, [modal]: false }));
-    },
-    [setModalState],
-  );
-
-  const openModal = useCallback(
-    (modal: string) => {
-      setModalState((prevState) => ({ ...prevState, [modal]: true }));
-    },
-    [setModalState],
-  );
-
-  const onChange = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      setLocation(parseInt(e.target.value, 10));
-      closeModal('selectLocation');
-    },
-    [setLocation],
-  );
+  const { openModal } = useModal();
 
   return (
     <Container>
@@ -77,14 +48,6 @@ const MainPage: React.FC = () => {
       )}
 
       <ProfileButton />
-
-      <InitialModal isOpen={modalState.selectLocation} closeModal={() => closeModal('selectLocation')}>
-        <FormLocation onChange={onChange} />
-      </InitialModal>
-
-      <InitialModal isOpen={modalState.viewMap} closeModal={() => closeModal('viewMap')}>
-        <CurrentMap />
-      </InitialModal>
     </Container>
   );
 };
