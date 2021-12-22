@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Api } from '../api';
-import { Margin } from '../components/atomic/Margin';
+import Span from '../components/atomic/Spans/Span';
 import Title from '../components/atomic/Title';
 import RegisterExpandForm from '../components/organisms/register/RegisterExpandForm';
 import RegisterInitialForm from '../components/organisms/register/RegisterInitialForm';
@@ -30,6 +30,10 @@ const Content = styled.div`
   overflow: hidden;
 `;
 
+const UnderLineSpan = styled(Span)`
+  text-decoration: underline;
+`;
+
 const initalState = {
   email: '',
   password: '',
@@ -46,6 +50,14 @@ const RegisterPage: React.FC = () => {
   const onNext = useCallback(() => {
     setIsNext(true);
   }, [setIsNext]);
+
+  const onPrevious = useCallback(() => {
+    setIsNext(false);
+  }, [setIsNext]);
+
+  const onClickGoToMain = useCallback(() => {
+    navigate('/');
+  }, []);
 
   const onChangeInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
@@ -70,6 +82,7 @@ const RegisterPage: React.FC = () => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         errorMsg(error.response?.data.msg);
+        setIsNext(false);
       }
     }
   }, [register]);
@@ -77,17 +90,22 @@ const RegisterPage: React.FC = () => {
   return (
     <Container>
       <Title>회원가입</Title>
-      <Margin h="2rem" />
 
       <Content>
         <RegisterInitialForm onChangeInput={onChangeInput} onNext={onNext} isNext={isNext} input={register} />
+
         <RegisterExpandForm
           onChange={{ onChangeInput, onChangeSelect }}
+          onPrevious={onPrevious}
           postRegister={postRegister}
           isNext={isNext}
           input={register}
         />
       </Content>
+
+      <UnderLineSpan fWeight="bold" onClick={onClickGoToMain}>
+        메인으로 가기
+      </UnderLineSpan>
     </Container>
   );
 };

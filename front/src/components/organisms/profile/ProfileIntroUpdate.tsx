@@ -10,7 +10,6 @@ import { errorMsg } from '../../../utils/errorMsg';
 import { successMsg } from '../../../utils/successMsg';
 import { useProfile } from '../../../hooks/useProfile';
 import Bar from '../../atomic/Bar';
-import { Margin } from '../../atomic/Margin';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
 import OptionButton from '../../atomic/buttons/OptionButton';
 
@@ -27,7 +26,9 @@ const Wrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
   width: 100%;
+  margin-bottom: 1rem;
 `;
 
 const SaveButton = styled(SubmitButton)`
@@ -111,10 +112,8 @@ const ProfileIntroUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
           - ul
         </OptionButton>
       </Wrap>
-      <Margin h="1rem" />
 
       <Bar />
-      <Margin h="0.5rem" />
 
       <Editor editorState={editorState} onChange={setEditorState} handleKeyCommand={handleKey} />
 

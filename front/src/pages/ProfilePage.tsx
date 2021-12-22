@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { logoutUser } from '../api/LoginManage';
-import { Margin } from '../components/atomic/Margin';
 import InitialModal from '../components/modal/InitialModal';
 import ProfileInfo from '../components/organisms/profile/ProfileInfo';
 import ProfileIntro from '../components/organisms/profile/ProfileIntro';
@@ -13,11 +12,15 @@ import SubmitButton from '../components/atomic/buttons/SubmitButton';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+
   width: 100vw;
+  height: 90vh;
+  padding: 1rem 0;
 `;
 
 const LogoutButton = styled(SubmitButton)`
   align-self: center;
+  margin: 1rem 0;
 `;
 
 const ProfilePage: React.FC = () => {
@@ -48,16 +51,11 @@ const ProfilePage: React.FC = () => {
 
   return (
     <Container>
-      <Margin h="1rem" />
-
       <ProfileInfo openModal={() => openModal('profileInfo')} />
-      <Margin h="1rem" />
 
       <ProfileIntro openModal={() => openModal('profileIntro')} />
-      <Margin h="1rem" />
 
       <LogoutButton onClick={onClickLogOut}>로그아웃</LogoutButton>
-      <Margin h="1rem" />
 
       <InitialModal isOpen={modalState.profileInfo} closeModal={() => closeModal('profileInfo')}>
         <ProfileInfoUpdate closeModal={() => closeModal('profileInfo')} />

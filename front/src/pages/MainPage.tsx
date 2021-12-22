@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { RenderAnimate } from '../Animate';
-import { Margin } from '../components/atomic/Margin';
 import Title from '../components/atomic/Title';
 import InitialModal from '../components/modal/InitialModal';
 import ProfileButton from '../components/molecules/buttons/ProfileButton';
@@ -62,20 +61,16 @@ const MainPage: React.FC = () => {
       {depth >= 0 && (
         <>
           <Title>날씨(기상정보)</Title>
-          <Margin h="1rem" />
 
           <DailyWeather openModal={openModal} />
-          <Margin h="1.5rem" />
 
           <WeeklyWeather />
-          <Margin h="2rem" />
         </>
       )}
 
       {depth >= 1 && (
         <>
-          <Title>코로나 현황(기상정보)</Title>
-          <Margin h="1rem" />
+          <Title>코로나 현황</Title>
 
           <Corona />
         </>

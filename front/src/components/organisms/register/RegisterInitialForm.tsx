@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { RegisterProps } from '../../../api/types';
 import { errorMsg } from '../../../utils/errorMsg';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
-import { Margin } from '../../atomic/Margin';
+import Span from '../../atomic/Spans/Span';
 import FormInput from '../../molecules/form/FormInput';
 
 const Form = styled.form<{ isNext: boolean }>`
@@ -15,7 +15,7 @@ const Form = styled.form<{ isNext: boolean }>`
   flex-direction: column;
   align-items: center;
 
-  transition: all 1s;
+  transition: all 500ms;
 
   ${(props) =>
     props.isNext &&
@@ -64,7 +64,6 @@ const RegisterInitalForm: React.FC<RegisterFormProps> = ({ onNext, onChangeInput
         value={email}
         onChange={(e) => onChangeInput(e, 'email')}
       />
-      <Margin h="1rem" />
 
       <FormInput
         isAbs
@@ -74,7 +73,6 @@ const RegisterInitalForm: React.FC<RegisterFormProps> = ({ onNext, onChangeInput
         value={password}
         onChange={(e) => onChangeInput(e, 'password')}
       />
-      <Margin h="1rem" />
 
       <FormInput
         isAbs
@@ -84,9 +82,8 @@ const RegisterInitalForm: React.FC<RegisterFormProps> = ({ onNext, onChangeInput
         value={passwordC}
         onChange={(e) => onChangeInput(e, 'passwordC')}
       />
-      <Margin h="2rem" />
 
-      <SubmitButton>다음</SubmitButton>
+      <SubmitButton mg="2rem 0 0 0">다음</SubmitButton>
     </Form>
   );
 };

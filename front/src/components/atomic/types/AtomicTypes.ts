@@ -4,4 +4,5 @@ export interface AtomicProps {
   fSize?: string;
   fWeight?: string;
   color?: string;
+  mg?: string;
 }

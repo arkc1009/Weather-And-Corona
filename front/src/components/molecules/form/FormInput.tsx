@@ -7,6 +7,8 @@ import { FormInputProps } from './types/FormInputProps';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+
+  margin-top: 1rem;
 `;
 
 const FormInput: React.FC<FormInputProps> = ({ isAbs, label, type, placeholder, value, onChange }) => {

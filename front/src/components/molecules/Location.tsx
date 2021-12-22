@@ -1,7 +1,6 @@
 import React from 'react';
 import { Map, MapPin } from 'react-feather';
 import styled from 'styled-components';
-import { Margin } from '../atomic/Margin';
 import Span from '../atomic/Spans/Span';
 
 const Container = styled.div`
@@ -9,9 +8,10 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  padding-left: 1rem;
-
   align-self: start;
+
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
 
   & svg {
     width: 1.3rem;
@@ -39,10 +39,10 @@ const Location: React.FC<LocationProps> = ({ city, openModal }) => {
   return (
     <Container>
       <MapPin />
-      <Margin w=".2rem" />
 
-      <Span fWeight="300">{city}</Span>
-      <Margin w="0.5rem" />
+      <Span fWeight="300" mg="0 0.5rem 0.2rem 0">
+        {city}
+      </Span>
 
       <UnderLineSpan fSize="0.8rem" fWeight="300" onClick={() => openModal('selectLocation')}>
         다른 지역

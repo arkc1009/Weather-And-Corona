@@ -8,6 +8,7 @@ const Container = styled.div`
   flex-direction: column;
 
   padding: 0 1.5rem;
+  margin-bottom: 1rem;
 `;
 
 const ProfileIntro: React.FC<{ openModal: () => void }> = ({ openModal }) => {

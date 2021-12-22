@@ -6,7 +6,6 @@ import { Api } from '../../../api';
 import { errorMsg } from '../../../utils/errorMsg';
 import { successMsg } from '../../../utils/successMsg';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
-import { Margin } from '../../atomic/Margin';
 import Span from '../../atomic/Spans/Span';
 import FormInput from '../../molecules/form/FormInput';
 
@@ -14,6 +13,8 @@ const Container = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-top: 2rem;
 `;
 
 const initalState = {
@@ -64,7 +65,6 @@ const LoginForm: React.FC = () => {
         value={email}
         onChange={(e) => onChange(e, 'email')}
       />
-      <Margin h="1rem" />
 
       <FormInput
         isAbs
@@ -74,10 +74,8 @@ const LoginForm: React.FC = () => {
         value={password}
         onChange={(e) => onChange(e, 'password')}
       />
-      <Margin h="1rem" />
 
-      <SubmitButton>로그인</SubmitButton>
-      <Margin h="0.5rem" />
+      <SubmitButton mg="1.5rem 0 0.5rem 0">로그인</SubmitButton>
 
       <UnderLineSpan fSize="0.9rem" fWeight="bold" color="#333333" onClick={onClickRegister}>
         회원가입 하러 가기

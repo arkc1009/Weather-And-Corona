@@ -7,7 +7,6 @@ import { ProfileUpdateProps } from './types';
 import { useProfile } from '../../../hooks/useProfile';
 import { errorMsg } from '../../../utils/errorMsg';
 import { successMsg } from '../../../utils/successMsg';
-import { Margin } from '../../atomic/Margin';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
 import FormLocation from '../../molecules/form/FormLocation';
 import FormInput from '../../molecules/form/FormInput';
@@ -69,12 +68,10 @@ const ProfileUpdate: React.FC<ProfileUpdateProps> = ({ closeModal }) => {
         value={name}
         onChange={(e) => onChangeInput(e, 'name')}
       />
-      <Margin h="1rem" />
 
       <FormLocation onChange={onChangeSelect} />
-      <Margin h="1rem" />
 
-      <SubmitButton>수정</SubmitButton>
+      <SubmitButton mg="1rem 0 0 0">수정</SubmitButton>
     </Form>
   );
 };

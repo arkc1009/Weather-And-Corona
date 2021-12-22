@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { useProfile } from '../../../hooks/useProfile';
 import Bar from '../../atomic/Bar';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
-import { Margin } from '../../atomic/Margin';
 import Span from '../../atomic/Spans/Span';
 import Title from '../../atomic/Title';
 import ProfileEmail from '../../molecules/profiles/ProfileEmail';
@@ -14,6 +13,7 @@ import ProfileName from '../../molecules/profiles/ProfileName';
 
 const Container = styled.div`
   padding: 0 1rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Wrap = styled.div`
@@ -49,9 +49,8 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ openModal }) => {
       <Wrap>
         <TitleWrap>
           <Title>프로필</Title>
-          <Margin w="1rem" />
 
-          <SubmitButton w="3rem" h="1rem" onClick={openModal}>
+          <SubmitButton w="3rem" h="1rem" mg="0 0 0 1rem" onClick={openModal}>
             <Edit2 />
           </SubmitButton>
         </TitleWrap>

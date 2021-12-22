@@ -1,7 +1,5 @@
 export const cityName = (city: number): string => {
   switch (city) {
-    case 0:
-      return '지역';
     case 1835847:
       return '서울';
     case 1838519:

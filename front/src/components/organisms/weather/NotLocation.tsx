@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
-import { Margin } from '../../atomic/Margin';
 
 const Container = styled.div`
   width: 80%;
@@ -12,6 +11,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  margin: 1rem 0;
   padding: 1rem;
 
   background-color: #fff;
@@ -25,8 +26,10 @@ const NotLocation: React.FC = () => {
 
   return (
     <Container>
-      위치 정보를 등록해주세요! <Margin h="1rem" />
-      <SubmitButton onClick={() => navigate('/main/profile')}>등록하러 가기</SubmitButton>
+      위치 정보를 등록해주세요!
+      <SubmitButton mg="1rem 0 0 0" onClick={() => navigate('/main/profile')}>
+        등록하러 가기
+      </SubmitButton>
     </Container>
   );
 };

@@ -9,6 +9,7 @@ const SubmitButton = styled.button<AtomicProps>`
   justify-content: center;
   align-items: center;
 
+  margin: ${(props) => props.mg && props.mg};
   padding: 1rem;
 
   font-size: ${(props) => (props.fSize ? props.fSize : '1rem')};

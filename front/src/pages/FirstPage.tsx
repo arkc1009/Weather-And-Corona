@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import SubmitButton from '../components/atomic/buttons/SubmitButton';
-import { Margin } from '../components/atomic/Margin';
 import NLink from '../components/atomic/NLink';
 
 const Container = styled.div`
@@ -22,7 +21,6 @@ const FirstPage: React.FC = () => {
       <NLink to="/login">
         <SubmitButton>로그인</SubmitButton>
       </NLink>
-      <Margin h="2rem" />
 
       <NLink to="/register">
         <SubmitButton>회원가입</SubmitButton>

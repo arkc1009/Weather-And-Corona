@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import Label from '../../atomic/Label';
-import { Margin } from '../../atomic/Margin';
 import Select from '../../atomic/Select';
 import { FormSelectProps } from './types/FormSelectProps';
 
 const Container = styled.div`
+  min-width: 110px;
+
   display: flex;
+  justify-content: space-between;
+
+  margin-top: 1rem;
 `;
 
 const Option = [
@@ -34,7 +38,7 @@ const FormLocation: React.FC<FormSelectProps> = ({ onChange }) => {
   return (
     <Container>
       <Label>지역</Label>
-      <Margin w="1rem" />
+
       <Select onChange={onChange}>
         {Option.map((o) => (
           <option value={o.value} key={o.value}>
