@@ -34,13 +34,13 @@ const CoronaChart: React.FC<CoronaChartProps> = ({ info }) => {
     colors: ['#57aaee', '#FF3333'],
     series: [
       {
-        name: '확진자',
+        name: '신규 확진자',
         type: 'column',
         data: [0, 0, 0, 0, 0, 0, 0],
       },
       {
-        name: '사망자',
-        type: 'column',
+        name: '신규 사망자',
+        type: 'line',
         data: [0, 0, 0, 0, 0, 0, 0],
       },
     ],
@@ -77,20 +77,25 @@ const CoronaChart: React.FC<CoronaChartProps> = ({ info }) => {
   });
 
   const makeArray = useCallback(
-    (data: CoronaState) => {
+    (data: CoronaState, index: number) => {
+      if (index === 0) {
+        return;
+      }
       const { deathCnt, decideCnt, stateDt } = data;
+      const month = `${stateDt}`.slice(-4, -2);
+      const days = `${stateDt}`.slice(-2);
 
       setOptionState((prevState) => ({
-        deathCnts: prevState.deathCnts.concat(deathCnt),
-        decideCnts: prevState.decideCnts.concat(decideCnt),
-        stateDts: prevState.stateDts.concat(`${stateDt}`.slice(-4)),
+        deathCnts: prevState.deathCnts.concat(deathCnt - info[index - 1].deathCnt),
+        decideCnts: prevState.decideCnts.concat(decideCnt - info[index - 1].decideCnt),
+        stateDts: prevState.stateDts.concat(`${month}.${days}`),
       }));
     },
-    [setOptionState],
+    [setOptionState, info],
   );
 
   useEffect(() => {
-    info.reverse().map((data) => makeArray(data));
+    info.reverse().map((data, i) => makeArray(data, i));
 
     return () => {
       setOptionState({
@@ -113,6 +118,20 @@ const CoronaChart: React.FC<CoronaChartProps> = ({ info }) => {
       xaxis: {
         categories: optionState.stateDts,
       },
+      yaxis: [
+        {
+          ...prevState.yaxis[0],
+          min: Math.min(...optionState.decideCnts),
+          max: Math.max(...optionState.decideCnts) + 500,
+          forceNiceScale: true,
+        },
+        {
+          ...prevState.yaxis[1],
+          min: Math.min(...optionState.deathCnts),
+          max: Math.max(...optionState.deathCnts) + 10,
+          forceNiceScale: true,
+        },
+      ],
     }));
   }, [optionState]);
 

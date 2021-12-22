@@ -1,6 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { RenderAnimate } from '../../../Animate';
+import { useDepth } from '../../../hooks/useDepth';
 import { useLocation } from '../../../hooks/useLocation';
 import { useProfile } from '../../../hooks/useProfile';
 import { useWeather } from '../../../hooks/useWeather';
@@ -12,6 +13,7 @@ import Location from '../../molecules/Location';
 import HourlyWeather from '../../molecules/weathers/HourlyWeather';
 import TodayWeather from '../../molecules/weathers/TodayWeather';
 import NotLocation from './NotLocation';
+import { MainModalTypes } from '../../modal/types/MainModalTypes';
 
 const Container = styled.div`
   position: relative;
@@ -56,10 +58,11 @@ const Axis = styled.div`
 `;
 
 interface DailyWeatherProps {
-  openModal: (modal: string) => void;
+  openModal: (modal: MainModalTypes) => void;
 }
 
 const DailyWeather: React.FC<DailyWeatherProps> = ({ openModal }) => {
+  const { addDepth } = useDepth();
   const { profile } = useProfile();
   const { location, setLocation } = useLocation();
   const value = useWeather();
@@ -67,6 +70,10 @@ const DailyWeather: React.FC<DailyWeatherProps> = ({ openModal }) => {
   const city = useMemo(() => cityName(location), [location]);
   const todayWeather = useMemo(() => value && value.weathers && value.weathers.daily[0], [value]);
   const hourlyWeather = useMemo(() => value && value.weathers && value.weathers.hourly, [value]);
+
+  useEffect(() => {
+    addDepth();
+  }, []);
 
   if (!location) {
     return <NotLocation />;

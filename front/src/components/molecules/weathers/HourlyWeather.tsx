@@ -58,7 +58,7 @@ const HourlyWeather: React.FC<HourlyWeatherProps> = ({ hourly }) => {
       },
     },
     xaxis: {
-      categories: ['오전3시', '오전6시', '오전9시', '오후12시', '오후3시', '오후6시', '오후9시', '오후12시'],
+      categories: ['3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm', '12am'],
     },
     yaxis: [
       {
