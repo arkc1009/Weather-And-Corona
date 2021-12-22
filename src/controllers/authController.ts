@@ -15,12 +15,12 @@ export const login = (req: Request, res: Response) => {
 
   const user = findUser(email);
   if (!user) {
-    makeError(res, 400, '사용자가 존재하지 않습니다.');
+    makeError(res, 401, '사용자가 존재하지 않습니다.');
     return;
   }
 
   if (user.password !== password) {
-    makeError(res, 400, '비밀번호가 올바르지 않습니다.');
+    makeError(res, 402, '비밀번호가 올바르지 않습니다.');
     return;
   }
 
@@ -61,7 +61,7 @@ export const register = (req: Request, res: Response) => {
 
   const user = findUser(email);
   if (user) {
-    makeError(res, 400, '이미 사용중인 이메일입니다.');
+    makeError(res, 401, '이미 사용중인 이메일입니다.');
     return;
   }
 
