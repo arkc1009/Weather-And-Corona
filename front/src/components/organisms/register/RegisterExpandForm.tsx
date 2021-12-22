@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { RegisterProps } from '../../../api/types';
-import { errorMsg } from '../../../utils/errorMsg';
 import SubmitButton from '../../atomic/buttons/SubmitButton';
 import Span from '../../atomic/Spans/Span';
 import FormLocation from '../../molecules/form/FormLocation';
@@ -40,27 +39,32 @@ interface RegisterFormProps {
     onChangeInput: (e: React.ChangeEvent<HTMLInputElement>, id: string) => void;
     onChangeSelect: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   };
-
+  onPrevious: () => void;
   postRegister: () => void;
 }
 
-const RegisterExpandForm: React.FC<RegisterFormProps> = ({ onChange, postRegister, isNext, input }) => {
+const RegisterExpandForm: React.FC<RegisterFormProps> = ({ onChange, onPrevious, postRegister, isNext, input }) => {
+  const nameRef = useRef<HTMLInputElement>(null);
+
   const onSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const { name, location } = input;
-      if (!name.trim() || !location || location === 0) {
-        errorMsg('공백이 있습니다.');
-        return;
-      }
 
       postRegister();
     },
-    [postRegister, input],
+    [postRegister],
   );
 
   const { name } = input;
   const { onChangeInput, onChangeSelect } = onChange;
+
+  useEffect(() => {
+    if (isNext) {
+      setTimeout(() => {
+        nameRef.current?.focus();
+      }, 800);
+    }
+  }, [isNext]);
 
   return (
     <Form onSubmit={onSubmit} isNext={isNext}>
@@ -77,6 +81,9 @@ const RegisterExpandForm: React.FC<RegisterFormProps> = ({ onChange, postRegiste
 
       <SubmitButton w="15rem" mg="2rem 0 1rem 0">
         회원가입
+      </SubmitButton>
+      <SubmitButton onClick={onPrevious} type="button">
+        뒤로가기
       </SubmitButton>
 
       <UnderLineSpan fSize=".9rem">이름과 지역은 나중에 변경할 수 있어요!</UnderLineSpan>

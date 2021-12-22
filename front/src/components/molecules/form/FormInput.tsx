@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import Input from '../../atomic/Input';
 import Label from '../../atomic/Label';
@@ -11,13 +11,16 @@ const Container = styled.div`
   margin-top: 1rem;
 `;
 
-const FormInput: React.FC<FormInputProps> = ({ isAbs, label, type, placeholder, value, onChange }) => {
+export const FormInput = (
+  { isAbs, label, type, placeholder, value, onChange }: FormInputProps,
+  ref: React.ForwardedRef<HTMLInputElement>,
+): React.ReactElement => {
   return (
     <Container>
       <Label isAbs={isAbs}>{label}</Label>
-      <Input type={type} placeholder={placeholder} value={value} onChange={onChange} />
+      <Input type={type} placeholder={placeholder} value={value} ref={ref} onChange={onChange} />
     </Container>
   );
 };
 
-export default FormInput;
+export default forwardRef(FormInput);
