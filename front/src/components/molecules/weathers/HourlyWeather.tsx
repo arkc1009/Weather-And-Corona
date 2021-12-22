@@ -124,6 +124,26 @@ const HourlyWeather: React.FC<HourlyWeatherProps> = ({ hourly }) => {
         { ...prevState.series[1], data: optionState.humiditys },
         { ...prevState.series[2], data: optionState.temps },
       ],
+      yaxis: [
+        {
+          ...prevState.yaxis[0],
+          min: Math.min(...optionState.cloudses),
+          max: Math.max(...optionState.cloudses),
+          forceNiceScale: true,
+        },
+        {
+          ...prevState.yaxis[1],
+          min: Math.min(...optionState.humiditys),
+          max: Math.max(...optionState.humiditys) + 5,
+          forceNiceScale: true,
+        },
+        {
+          ...prevState.yaxis[2],
+          min: Math.min(...optionState.temps),
+          max: Math.max(...optionState.temps) + 2,
+          forceNiceScale: true,
+        },
+      ],
     }));
   }, [optionState]);
 

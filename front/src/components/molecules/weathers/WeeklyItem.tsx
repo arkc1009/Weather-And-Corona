@@ -40,9 +40,9 @@ const WeeklyItem: React.FC<WeeklyItemProps> = ({ weather, index, widthRadio }) =
   const { daysRadio, cloudsRadio, iconRadio, tempRadio } = widthRadio;
   const { clouds, temp, dt } = weather;
   const time = useMemo(() => dt && new Date(dt * 1000), [dt]);
-  const isToday = useMemo(() => time && time.getDay() === new Date().getDay(), [time]);
+  const isToday = useMemo(() => time && time.getDate() === new Date().getDate(), [time]);
 
-  if (index === 0) {
+  if (index === 7) {
     return null;
   }
 
@@ -55,7 +55,7 @@ const WeeklyItem: React.FC<WeeklyItemProps> = ({ weather, index, widthRadio }) =
       <Wrap mw={cloudsRadio}>
         <Droplet />
 
-        <Span mg="0 0 0 0.2rem" color={clouds && clouds >= 70 ? '#5c7aea' : 'inital'}>
+        <Span mg="0 0 0 0.2rem" color={clouds && clouds >= 80 ? '#5c7aea' : 'inital'}>
           {clouds}%
         </Span>
       </Wrap>
