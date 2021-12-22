@@ -84,6 +84,7 @@ const Corona: React.FC = () => {
         <Span>확진자</Span>
         <Span>사망자</Span>
       </Axis>
+
       <CoronaChart info={coronaInfo} />
     </Container>
   );

@@ -1,5 +1,5 @@
 import ApexCharts from 'apexcharts';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { CoronaState } from '../../../api/types';
 
@@ -94,8 +94,8 @@ const CoronaChart: React.FC<CoronaChartProps> = ({ info }) => {
     [setOptionState, info],
   );
 
-  useEffect(() => {
-    info.reverse().map((data, i) => makeArray(data, i));
+  useLayoutEffect(() => {
+    info.map((data, i) => makeArray(data, i));
 
     return () => {
       setOptionState({

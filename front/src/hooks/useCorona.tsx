@@ -21,7 +21,7 @@ export const CoronaProvider: React.FC = ({ children }) => {
   const fetchCorona = useCallback(async () => {
     try {
       const res = await axios.get(URL);
-      setCoronaInfo(res.data.response.body.items.item);
+      setCoronaInfo(res.data.response.body.items.item.reverse());
     } catch (error) {
       if (axios.isAxiosError(error)) {
         errorMsg('코로나 정보를 가져오지 못했습니다.');
